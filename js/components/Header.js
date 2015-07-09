@@ -28,7 +28,7 @@ var Header = React.createClass({
                 <div  className={"collapse navbar-collapse box-shadow bg-primary "+(this.state.showed?'show':"")}>
                     <ul className="nav navbar-nav">
                     {this.props.appList.map(function(app){
-                        return <li className={"pos-stc"+(app.selected?'active':'')}  onClick={self._selectHandler.bind(null,app)}>
+                        return <li className={"pos-stc "+(app.selected?'active':'')}  onClick={self._selectHandler.bind(null,app)}>
                             <a href="javascript:;" className="dropdown-toggle">
                                 <span>{app.name}</span>
                             </a>
@@ -37,7 +37,7 @@ var Header = React.createClass({
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <li className="dropdown">
-                            <a href className="dropdown-toggle clear" data-toggle="dropdown">
+                            <a href="javascript:;" className="dropdown-toggle clear" data-toggle="dropdown">
                                 <span className="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                                     <img src={this.props.user.icon?this.props.user.icon:"img/default_head.png"} alt="..." />
                                     <i className="on md b-white bottom"></i>

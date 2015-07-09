@@ -90,10 +90,10 @@ var Aside = React.createClass({
     _toggleList:function(node){
         var nodeList = this.props.nodeList;
         for(var i=0;i<nodeList.length;i++){
-            if(node.code==nodeList[i].code){
-                nodeList[i].opened = true;
-            }else{
+            if(node.code!=nodeList[i].code){
                 nodeList[i].opened = false;
+            }else{
+                nodeList[i].opened = !nodeList[i].opened;
             }
         }
         this.setState({nodeList:nodeList});
