@@ -1,17 +1,24 @@
 var React = require('react');
 
-//var M = require('./utils/M');
+var Ajax = require('./utils/reqwest');
 
 var AppActions = require('./actions/AppActions');
 
-var Workspace = require('./components/workspace/Workspace');
+var Workspace = require('./components/Workspace');
 
-var workspace = React.render(<Workspace />,document.querySelector('body'));
-AppActions.receiveAppData({});
-////远程获取数据 获取成功后并返回给AppActions
-//M.rcc.get('url',{},function(data){
-//    //获取数据给actions
-//    AppActions.receiveAppData(data);
-//});
-
+var workspace = React.render(<Workspace appName="React" />,document.querySelector('body'));
+Ajax({
+    url: 'js/model.json'
+    , type: 'json'
+    , method: 'get'
+    , contentType: 'application/json'
+    , crossOrigin: true
+    , withCredentials: true
+    , error: function (err) { }
+    , success: function (rs) {
+        AppActions.receiveAppData(rs.data);
+        console.info(workspace);
+        console.info(rs);
+    }
+});
 

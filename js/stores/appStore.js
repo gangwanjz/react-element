@@ -14,14 +14,24 @@ var AppStore = _.extend({},EventEmitter.prototype,{
 
     getAppData:function(){
         return _appData;
+    },
+    addListener:function(actionType,callback){
+        this.on(actionType,callback);
+    },
+    removeListener:function(actionType,callback){
+        this.removeListener(actionType, callback);
+    },
+    emitHandle:function(actionType){
+        this.emit(actionType);
     }
 
 });
 AppDispatcher.register(function(payload){
-    var action = payload;
+    var action = payload.action;
     switch (action.actionType){
         case AppConstants.RECEIVE_DATA :
             loadAppData(action.data);
+            AppStore.emitHandle('data-change');
             break;
     }
     return true;
