@@ -33,8 +33,11 @@ var Workspace = React.createClass({
                     appList = {this.state.app}
                     user = {this.state.user}
                     selectApp = {this._selectAppHandler}
+                    toggleAside = {this._toggleAsideHandler}
                 />
-                <Aside />
+                <div ref="aside" className={"app-aside hidden-xs bg-dark "+(this.state.openAside?"off-screen":"")}>
+                    <Aside nodeList={this.state.node} selectNode = {this._selectNodeHandler}/>
+                </div>
                 <Workspace.Content />
                 <Workspace.Footer />
             </div>
@@ -43,8 +46,23 @@ var Workspace = React.createClass({
     _dataChange:function(){
         this.setState(getAppData());
     },
-    _selectAppHandler:function(code){
-        AppActions.selectApp(code);
+    _selectAppHandler:function(app){
+        AppActions.selectApp(app);
+        console.info("workspace.selected:"+JSON.stringify(app));
+    },
+    _selectNodeHandler:function(node){
+        AppActions.selectNode(node);
+        console.info("workspace.selected:"+JSON.stringify(node));
+    },
+    _toggleAsideHandler:function(){
+        var asideClassName = this.refs.aside.props.className;
+        var index =  asideClassName.indexOf('off-screen'),openAside;
+        if(index>0){
+            openAside = false;
+        }else{
+            openAside = true;
+        }
+        this.setState({openAside:openAside});
     },
     _updateNode:function(){
         console.info('update node list');

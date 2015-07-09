@@ -5,16 +5,19 @@ var React = require('react');
  */
 var Header = React.createClass({
 
+    getInitialState:function(){
+      return {showed:false}
+    },
     //渲染 显示
     render:function(){
         var self = this;
         return (
             <div className="app-header navbar">
                 <div className="navbar-header bg-dark">
-                    <button className="pull-right visible-xs dk">
+                    <button className="pull-right visible-xs dk" onClick={this._toggleAppList}>
                         <i className="glyphicon glyphicon-cog"></i>
                     </button>
-                    <button className="pull-right visible-xs">
+                    <button className="pull-right visible-xs" onClick={this.props.toggleAside}>
                         <i className="glyphicon glyphicon-align-justify"></i>
                     </button>
                     <a href="javascript:;" className="navbar-brand text-lt">
@@ -22,10 +25,10 @@ var Header = React.createClass({
                         <span className="hidden-folded m-l-xs">{this.props.appName}</span>
                     </a>
                 </div>
-                <div className="collapse navbar-collapse box-shadow bg-primary">
+                <div  className={"collapse navbar-collapse box-shadow bg-primary "+(this.state.showed?'show':"")}>
                     <ul className="nav navbar-nav">
                     {this.props.appList.map(function(app){
-                        return <li className={"pos-stc"+(self.selected==app.code?'active':'')} code={app.code} onClick={self._selectHandler.bind(null,app.code)}>
+                        return <li className={"pos-stc"+(app.selected?'active':'')}  onClick={self._selectHandler.bind(null,app)}>
                             <a href="javascript:;" className="dropdown-toggle">
                                 <span>{app.name}</span>
                             </a>
@@ -47,19 +50,23 @@ var Header = React.createClass({
             </div>
         );
     },
-    _selectHandler:function(code){
-        console.info(code);
-        this.setState({selected:code});
-        //TODO 回调方法出去
-        if(this.props.selectApp){
-            this.props.selectApp(code);
+    _selectHandler:function(app){
+        if(app.selected)return;
+        var appList = this.props.appList;
+        for(var i=0;i<appList.length;i++){
+            if(appList[i].code==app.code){
+                appList[i].selected = true;
+            }else{
+                appList[i].selected = false;
+            }
         }
-    }
-});
-Header.appItem = React.createClass({
-
-    render:function(){
-
+        this.setState({appList:appList});
+        if(this.props.selectApp){
+            this.props.selectApp(app);
+        }
+    },
+    _toggleAppList:function(){
+        this.setState({showed:!this.state.showed});
     }
 });
 module.exports = Header;

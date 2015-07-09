@@ -8,7 +8,10 @@ logs/
 logs/*
 .idea/
 .sass-cache
+
 node_modules/
+js/bundle.js
+js/bundle.min.js
 
 # Windows image file caches
 Thumbs.db

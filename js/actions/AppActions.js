@@ -11,6 +11,9 @@ var AppActions = {
     //获取app信息
     selectApp:function(data){
 
+    },
+    selectNode:function(data){
+
     }
 };
 module.exports = AppActions;
