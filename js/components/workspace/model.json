@@ -1,0 +1,160 @@
+{
+  "data":{
+    "app":[
+      {
+        "code": "bpm",
+        "name": "业务中心",
+        "type": "app",
+        "url": "/node/bpm"
+      },
+      {
+        "code": "cm",
+        "name": "合同管理",
+        "type": "app",
+        "url": "/node/cm"
+      },
+      {
+        "code": "gl",
+        "name": "在线账务",
+        "type": "app",
+        "url": "/node/gl"
+      },
+      {
+        "code": "pf",
+        "name": "平台",
+        "type": "app",
+        "url": "/node/pf"
+      },
+      {
+        "code": "tm",
+        "name": "考勤管理",
+        "type": "app",
+        "url": "/node/tm"
+      }
+    ],
+    "node":[
+      {
+        "code": "bpm_pd_list",
+        "inum": -1,
+        "name": "发起新流程",
+        "type": "node",
+        "url": "/node/bpm/add"
+      },
+      {
+        "children": [
+          {
+            "badge": 0,
+            "code": "bpm_draft",
+            "icon": "file",
+            "inum": 5,
+            "name": "草稿箱",
+            "type": "node",
+            "url": "/node/bpm/drafts"
+          },
+          {
+            "badge": 2,
+            "code": "bpm_proc",
+            "icon": "shopping-cart",
+            "inum": 7,
+            "name": "处理中",
+            "type": "node",
+            "url": "/node/bpm/ongoing"
+          },
+          {
+            "badge": 1,
+            "code": "bpm_reject",
+            "icon": "remove",
+            "inum": 11,
+            "name": "被驳回",
+            "type": "node",
+            "url": "/node/bpm/rejected"
+          },
+          {
+            "badge": 3,
+            "code": "bpm_final",
+            "icon": "ok",
+            "inum": 13,
+            "name": "已完成",
+            "type": "node",
+            "url": "/node/bpm/approved"
+          }
+        ],
+        "code": "proc_about_me",
+        "name": "我发起的流程",
+        "type": "folder"
+      },
+      {
+        "children": [
+          {
+            "badge": 0,
+            "code": "bpm_current",
+            "icon": "tasks",
+            "inum": 19,
+            "name": "待处理",
+            "type": "node",
+            "url": "/node/bpm/pending"
+          },
+          {
+            "badge": 2,
+            "code": "bpm_apprv",
+            "icon": "briefcase",
+            "inum": 23,
+            "name": "已处理",
+            "type": "node",
+            "url": "/node/bpm/handled"
+          }
+        ],
+        "code": "aprv_about_me",
+        "name": "我审批的流程",
+        "type": "folder"
+      },
+      {
+        "children": [
+          {
+            "code": "bpm_agent",
+            "inum": 31,
+            "name": "工作交接",
+            "type": "node",
+            "url": "/node/pf/nf/bpm_agent"
+          }
+        ],
+        "code": "bpm_other",
+        "name": "其他",
+        "type": "folder"
+      },
+      {
+        "children": [
+          {
+            "code": "bpm_pd",
+            "inum": 41,
+            "name": "流程定义",
+            "type": "node",
+            "url": "/node/pf/nf/bpm_pd"
+          },
+          {
+            "code": "bpm_test",
+            "inum": 43,
+            "name": "流程仿真",
+            "type": "node"
+          },
+          {
+            "code": "bpm_monitor",
+            "inum": 47,
+            "name": "流程监控(x)",
+            "type": "node"
+          },
+          {
+            "code": "bpm_pd_design",
+            "inum": 53,
+            "name": "流程设计(x)",
+            "type": "node"
+          }
+        ],
+        "code": "bpm_tool",
+        "name": "流程工厂",
+        "type": "folder"
+      }
+    ]
+  } ,
+  "status": 1
+}

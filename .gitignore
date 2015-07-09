@@ -8,6 +8,7 @@ logs/
 logs/*
 .idea/
 .sass-cache
+node_modules/
 
 # Windows image file caches
 Thumbs.db
@@ -31,7 +32,7 @@ $RECYCLE.BIN/
 
 # OSX
 # =========================
-
+.idea
 .DS_Store
 .AppleDouble
 .LSOverride
