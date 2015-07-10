@@ -27,7 +27,7 @@ var Header = React.createClass({
                 </div>
                 <div  className={"collapse navbar-collapse box-shadow bg-primary "+(this.state.showed?'show':"")}>
                     <ul className="nav navbar-nav">
-                    {this.props.appList.map(function(app){
+                    {(this.props.appList||[]).map(function(app){
                         return <li className={"pos-stc "+(app.selected?'active':'')}  onClick={self._selectHandler.bind(null,app)}>
                             <a href="javascript:;" className="dropdown-toggle">
                                 <span>{app.name}</span>

@@ -32,6 +32,7 @@
         "url": "/node/tm"
       }
     ],
+    "selectedApp":"bpm",
     "node":[
       {
         "code": "bpm_pd_list",
@@ -151,10 +152,7 @@
         "type": "folder",
         "icon":"file"
       }
-    ],
-    "user":{
-      "username":"贾召"
-    }
+    ]
   } ,
   "status": 1
 }
